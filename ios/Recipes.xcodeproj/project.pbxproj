@@ -16,6 +16,9 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RecipesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RecipesTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		0655CC93D34342A98A4526E5 /* GreatVibes-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8486A12E798044FA9E98EC8F /* GreatVibes-Regular.otf */; };
+		DC711E23C0684BE28D54802D /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5734E049BA854395A4EAFE95 /* OpenSans-Bold.ttf */; };
+		9456F4959B5747A3B66B3D07 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64133DD736F94B43BADBAF45 /* OpenSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Recipes/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		8486A12E798044FA9E98EC8F /* GreatVibes-Regular.otf */ = {isa = PBXFileReference; name = "GreatVibes-Regular.otf"; path = "../src/assets/fonts/GreatVibes-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5734E049BA854395A4EAFE95 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		64133DD736F94B43BADBAF45 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 				00E356EF1AD99517003FC87E /* RecipesTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				472C848FA2194C9B8FBD3FEF /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,6 +163,17 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		472C848FA2194C9B8FBD3FEF /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				8486A12E798044FA9E98EC8F /* GreatVibes-Regular.otf */,
+				5734E049BA854395A4EAFE95 /* OpenSans-Bold.ttf */,
+				64133DD736F94B43BADBAF45 /* OpenSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -295,6 +313,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0655CC93D34342A98A4526E5 /* GreatVibes-Regular.otf in Resources */,
+				DC711E23C0684BE28D54802D /* OpenSans-Bold.ttf in Resources */,
+				9456F4959B5747A3B66B3D07 /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
