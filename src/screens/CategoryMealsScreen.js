@@ -1,24 +1,44 @@
 import React from 'react';
-import { View, Text,Button, StyleSheet } from 'react-native';
-import {CATEGORIES} from '../data/dummy-data';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { CATEGORIES, MEALS } from '../data/dummy-data';
+import MealItem from '../components/MealItem';
 
 const CategoryMealsScreen = props => {
-    const catId=props.route.params.id;
-    const selectedCategory=CATEGORIES.find(cat=>cat.id===catId);
 
+    const catId = props.route.params.id;
+    const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
     React.useLayoutEffect(() => {
         props.navigation.setOptions({
             headerTitle: selectedCategory.title
         });
-    }, [props.navigation,props.route]);
+    }, [props.navigation, props.route]);
 
-  
-    console.log(selectedCategory)
+    const displayedMeals = MEALS.filter(
+        meal => meal.categoryIds.indexOf(catId) >= 0
+    );
+
+    const renderMealItem = itemData => {
+        return <MealItem
+            title={itemData.item.title}
+            duration={itemData.item.duration}
+            complexity={itemData.item.complexity}
+            affordability={itemData.item.affordability}
+            imageUrl={itemData.item.imageUrl}
+            onSelectMeal={() => {
+                props.navigation.navigate('MealDetail',{
+                    mealId:itemData.item.id
+                }) 
+            }}
+        />
+    }
     return (
         <View style={styles.screen}>
-            <Text>The CategoryMeals Screen!</Text>
-            <Text>{selectedCategory.title}</Text>
-            <Button title="Go to Datails" onPress={()=>props.navigation.navigate("MealDetail")}/>
+            <FlatList
+                data={displayedMeals}
+                keyExtractor={(item) => item.id}
+                renderItem={renderMealItem}
+                style={{ width: '100%' }}
+            />
         </View>
     )
 };
@@ -27,7 +47,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding:15
     }
 });
 
