@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { enableScreens } from 'react-native-screens';
 
@@ -15,5 +16,5 @@ import MealsNavigator from './src/navigation/MealsNavigator';
 enableScreens();
 
 export default function App() {
-    return <MealsNavigator />; 
+    return <SafeAreaProvider><MealsNavigator /></SafeAreaProvider>;
 }

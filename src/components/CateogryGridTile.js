@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet ,Platform} from 'react-native';
 
 const CateogryGridTile = props => {
     return <TouchableOpacity
@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 15,
         height: 150,
+        borderRadius:10,
+        overflow:Platform.OS==='android'&& 'hidden',
+        marginVertical:10,
+        elevation:3,
     },
     container:{
         flex:1,
@@ -29,8 +33,7 @@ const styles = StyleSheet.create({
             height:2
         },
         shadowRadius:10,
-        elevation:3,
-        padding:15
+       padding:15
     },
     title:{
         fontFamily:'OpenSans-Bold',
