@@ -17,11 +17,18 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Colors.primaryColor,
   },
+  headerTitleStyle:{
+    fontFamily:'OpenSans-Bold'
+      },
+      headerBackTitleStyle:{
+        fontFamily:'OpenSans-Regular'
+      },
   headerTitleAlign: 'center',
   headerTintColor: 'white',
 }
@@ -39,7 +46,7 @@ const MealsNavigator = () => {
 };
 
 const MealsFavTabNavigator = () => {
-  return <NavigationContainer>
+  return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -59,6 +66,9 @@ const MealsFavTabNavigator = () => {
       tabBarOptions={{
         activeTintColor: Colors.accentColor,
         inactiveTintColor: Colors.accentColor,
+        labelStyle:{
+          fontFamily:'OpenSans-Bold'
+         }
       }}
     >
       <Tab.Screen
@@ -67,7 +77,7 @@ const MealsFavTabNavigator = () => {
       />
       <Tab.Screen name="Favorites" component={FavNavigator} options={{ tabBarLabel: 'Favorites!' }} />
     </Tab.Navigator>
-  </NavigationContainer>
+)
 }
 
 const FavNavigator = () => {
@@ -82,4 +92,23 @@ const FavNavigator = () => {
   )
 };
 
-export default MealsFavTabNavigator;
+const FiltesNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={defaultStackNavOptions}
+    >
+      <Stack.Screen name="Filters" component={FiltersScreen} options={{ headerTitle: 'Filter Meals' }} />
+    </Stack.Navigator>
+  )
+};
+
+const MainNavigator = () => {
+  return <NavigationContainer>
+    <Drawer.Navigator initialRouteName="MealsFavs">
+      <Drawer.Screen name="MealsFavs" component={MealsFavTabNavigator} />
+      <Drawer.Screen name="Filters" component={FiltesNavigator} />
+    </Drawer.Navigator>
+  </NavigationContainer>
+}
+
+export default MainNavigator;

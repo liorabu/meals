@@ -1,12 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
 import CateogryGridTile from '../components/CateogryGridTile';
-
+import {HeaderButtons,Item} from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
 
 
 
 const CategoriesScreen = props => {
+
+    React.useLayoutEffect(() => {
+        props.navigation.setOptions({
+            headerLeft:() =>(<HeaderButtons HeaderButtonComponent={HeaderButton} >
+                <Item title="Menu" iconName="ios-menu" onPress={()=>
+               props.navigation.toggleDrawer()} />
+            </HeaderButtons>)
+        });
+    }, [props.navigation, props.route]);
+
     const renderGridItem = itemData => {
         return <CateogryGridTile
             title={itemData.item.title}
