@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { CATEGORIES, MEALS } from '../data/dummy-data';
+import { useSelector } from 'react-redux';
+import { CATEGORIES } from '../data/dummy-data';
 import MealList from '../components/MealList'
 
 const CategoryMealsScreen = props => {
 
     const catId = props.route.params.id;
+    const availableMeals = useSelector(state => state.meals.filteredMeals);
+
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
     React.useLayoutEffect(() => {
         props.navigation.setOptions({
@@ -13,12 +16,12 @@ const CategoryMealsScreen = props => {
         });
     }, [props.navigation, props.route]);
 
-    const displayedMeals = MEALS.filter(
+    const displayedMeals = availableMeals.filter(
         meal => meal.categoryIds.indexOf(catId) >= 0
     );
 
-    
-    return <MealList listData={displayedMeals} navigation={props.navigation}/>
+
+    return <MealList listData={displayedMeals} navigation={props.navigation} />
 };
 
 const styles = StyleSheet.create({
@@ -26,7 +29,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding:15
+        padding: 15
     }
 });
 

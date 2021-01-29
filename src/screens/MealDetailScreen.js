@@ -1,30 +1,48 @@
 import React from 'react';
-import { ScrollView, View, Text, Button, Image, StyleSheet } from 'react-native';
-import { MEALS } from '../data/dummy-data';
+import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
-import { Colors } from '../constants/Colors';
 import DefaultText from '../components/DefaltText';
+import { toggleFaorite } from '../store/actions/meals';
 
-const ListItems = props=>{
+
+const ListItems = props => {
     return <View style={styles.listItem}>
         <DefaultText>{props.children}</DefaultText>
     </View>
 }
 
 const MealDetailScreen = props => {
-
     const mealId = props.route.params.mealId;
-    const selectedMeal = MEALS.find(meal => meal.id === mealId);
+    const availableMeals = useSelector(state => state.meals.meals)
+    const selectedMeal = availableMeals.find(meal => meal.id === mealId);
+
+    let currentMealIsFavorite = useSelector(state =>
+        state.meals.favoriteMeals.some(meal => meal.id === mealId)
+    );
+
     React.useLayoutEffect(() => {
+        let icon;
+        if (currentMealIsFavorite) {
+            icon = 'star'
+        } else {
+            icon = 'star-outline'
+        }
         props.navigation.setOptions({
             headerTitle: selectedMeal.title,
             headerRight: () => (<HeaderButtons HeaderButtonComponent={HeaderButton} >
-                <Item title="Favorite" iconName="star" onPress={() =>
-                    console.log("abc")} />
+                <Item title="Favorite" iconName={icon} onPress={() =>
+                    toggleFaoriteHandler()} />
             </HeaderButtons>)
         });
-    }, [props.navigation, props.route]);
+    }, [props.navigation, props.route, currentMealIsFavorite]);
+
+    const dispatch = useDispatch();
+
+    const toggleFaoriteHandler = () => {
+        dispatch(toggleFaorite(mealId))
+    }
 
 
     return (
@@ -62,12 +80,12 @@ const styles = StyleSheet.create({
         fontSize: 22,
         textAlign: 'center'
     },
-    listItem:{
-        marginVertical:10,
-        marginHorizontal:20,
-        borderColor:'#ccc',
-        borderWidth:1,
-        padding:10
+    listItem: {
+        marginVertical: 10,
+        marginHorizontal: 20,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        padding: 10
     }
 });
 
